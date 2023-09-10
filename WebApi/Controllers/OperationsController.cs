@@ -1,4 +1,5 @@
-﻿using Application.Commands.Add;
+﻿using Application.Commands.DoubleOperands;
+using Application.Commands.SingleOperand;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Parameters;
@@ -16,17 +17,51 @@ namespace WebApi.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost("add")]
-        [ProducesResponseType(typeof(int), 200)]
-        public async Task<ActionResult<int>> Add([FromQuery] Addition parameters)
+        [HttpPost("double-operands")]
+        [ProducesResponseType(typeof(float), 200)]
+        [ProducesResponseType(typeof(string), 400)]
+        public async Task<ActionResult<float>> DoubleOperands([FromBody] DoubleOperandsCommandParameters parameters)
         {
-            var addCommand = new AddCommand
+            var divideCommand = new DoubleOperandsCommand
             {
-                FirstOperand = parameters.FirstOpereand,
-                SecondOperand = parameters.SecondOperand
+                FirstOperand = parameters.FirstOperand,
+                SecondOperand = parameters.SecondOperand,
+                Operator = parameters.Operator,
             };
 
-            return await _mediator.Send(addCommand);
+            try
+            {
+                return await _mediator.Send(divideCommand);
+            }
+            catch (Exception ex)
+            {
+                if (ex is DivideByZeroException || ex is ArgumentException)
+                {
+                    return BadRequest(ex.Message);
+                }
+                throw;
+            }
+        }
+
+        [HttpPost("single-operand")]
+        [ProducesResponseType(typeof(int), 200)]
+        [ProducesResponseType(typeof(string), 400)]
+        public async Task<ActionResult<int>> SingleOperand([FromBody] SingleOperandCommandParameters parameters)
+        {
+            var factorialCommand = new SingleOperandCommand
+            {
+                Value = parameters.Value,
+                Operator = parameters.Operator,
+            };
+
+            try
+            {
+                return await _mediator.Send(factorialCommand);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

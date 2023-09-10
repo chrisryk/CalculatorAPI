@@ -1,5 +1,4 @@
 using Application;
-using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +8,18 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        var origins = GetConfiguration("appsettings.json").GetSection("AllowedCorsOrigins").Get<string[]>();
+        builder.WithOrigins(origins)
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssemblyContaining<Program>();
@@ -26,6 +37,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
@@ -33,3 +46,11 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+static IConfigurationRoot GetConfiguration(string json)
+{
+    return new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile(json)
+        .Build();
+}
