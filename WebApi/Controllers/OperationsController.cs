@@ -44,9 +44,9 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("single-operand")]
-        [ProducesResponseType(typeof(int), 200)]
+        [ProducesResponseType(typeof(long), 200)]
         [ProducesResponseType(typeof(string), 400)]
-        public async Task<ActionResult<int>> SingleOperand([FromBody] SingleOperandCommandParameters parameters)
+        public async Task<ActionResult<long>> SingleOperand([FromBody] SingleOperandCommandParameters parameters)
         {
             var factorialCommand = new SingleOperandCommand
             {
@@ -58,9 +58,13 @@ namespace WebApi.Controllers
             {
                 return await _mediator.Send(factorialCommand);
             }
-            catch (ArgumentException ex)
+            catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                if (ex is ArgumentException || ex is OverflowException)
+                {
+                    return BadRequest(ex.Message);
+                }
+                throw;
             }
         }
     }

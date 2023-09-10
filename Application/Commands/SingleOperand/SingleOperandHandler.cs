@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Commands.SingleOperand
 {
-    public class SingleOperandHandler : IRequestHandler<SingleOperandCommand, int>
+    public class SingleOperandHandler : IRequestHandler<SingleOperandCommand, long>
     {
         private readonly ICalculationService _calculationService;
 
@@ -12,7 +12,7 @@ namespace Application.Commands.SingleOperand
         {
             _calculationService = calculationService;
         }
-        public async Task<int> Handle(SingleOperandCommand request, CancellationToken cancellationToken)
+        public async Task<long> Handle(SingleOperandCommand request, CancellationToken cancellationToken)
         {
             return request.Operator switch
             {
