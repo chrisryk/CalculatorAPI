@@ -1,7 +1,6 @@
 ﻿using Application.Constants;
 using Application.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Application.Commands.DoubleOperands
 {

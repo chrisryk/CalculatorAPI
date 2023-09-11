@@ -1,9 +1,10 @@
 ﻿using Core.Entities;
 
-namespace Infrastructure.Interfaces
+namespace Core.Interfaces
 {
     public interface IOperationRepository
     {
         Task CreateAsync(Operation operation);
+        Task<IList<Operation>> GetAllList();
     }
 }

@@ -10,6 +10,7 @@ namespace Application
         public static void ConfigureApplicationServices(IServiceCollection services)
         {
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddTransient<ICalculationService, CalculationService>();
             services.AddTransient<IOperationService, OperationService>();

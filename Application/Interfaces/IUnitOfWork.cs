@@ -1,4 +1,6 @@
-﻿namespace Infrastructure.Interfaces
+﻿using Core.Interfaces;
+
+namespace Infrastructure.Interfaces
 {
     public interface IUnitOfWork
     {

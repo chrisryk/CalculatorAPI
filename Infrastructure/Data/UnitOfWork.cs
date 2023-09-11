@@ -1,4 +1,5 @@
-﻿using Infrastructure.Interfaces;
+﻿using Core.Interfaces;
+using Infrastructure.Interfaces;
 using Infrastructure.Repositories;
 
 namespace Infrastructure.Data

@@ -1,4 +1,5 @@
-﻿using Infrastructure.Data;
+﻿using Core.Interfaces;
+using Infrastructure.Data;
 using Infrastructure.Interfaces;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;

@@ -1,5 +1,8 @@
 ﻿using Application.Commands.DoubleOperands;
 using Application.Commands.SingleOperand;
+using Application.Models;
+using Application.Queries.History;
+using FluentResults;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Parameters;
@@ -66,6 +69,13 @@ namespace WebApi.Controllers
                 }
                 throw;
             }
+        }
+
+        [HttpGet("history")]
+        [ProducesResponseType(typeof(IList<OperationDto>), 200)]
+        public async Task<ActionResult<Result<IList<OperationDto>>>> GetHistory()
+        {
+            return await _mediator.Send(new HistoryQuery());
         }
     }
 }
