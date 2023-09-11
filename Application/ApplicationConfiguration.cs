@@ -12,6 +12,7 @@ namespace Application
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
             services.AddTransient<ICalculationService, CalculationService>();
+            services.AddTransient<IOperationService, OperationService>();
         }
     }
 }

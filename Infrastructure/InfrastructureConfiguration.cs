@@ -14,6 +14,8 @@ namespace Infrastructure
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IOperationRepository, OperationRepository>();
+
+            services.BuildServiceProvider().GetService<AppDbContext>().Database.Migrate();
         }
     }
 }

@@ -4,6 +4,6 @@ namespace Infrastructure.Interfaces
 {
     public interface IOperationRepository
     {
-        Task AddAsync(Operation operation);
+        Task CreateAsync(Operation operation);
     }
 }

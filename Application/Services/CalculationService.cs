@@ -1,19 +1,10 @@
 ﻿using Application.Constants;
 using Application.Interfaces;
-using Infrastructure.Interfaces;
 
 namespace Application.Services
 {
     public class CalculationService : ICalculationService
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IOperationRepository _operationRepository;
-
-        public CalculationService(IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-            _operationRepository = unitOfWork.OperationRepository;
-        }
         /// <summary>
         /// Addition operation for two numbers.
         /// </summary>

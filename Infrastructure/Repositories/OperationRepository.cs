@@ -13,7 +13,7 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task AddAsync(Operation operation)
+        public async Task CreateAsync(Operation operation)
         {
             await _context.Operations.AddAsync(operation);
         }
