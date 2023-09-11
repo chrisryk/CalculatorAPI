@@ -1,4 +1,5 @@
 using Application;
+using Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,14 @@ builder.Services.AddMediatR(cfg =>
     cfg.Lifetime = ServiceLifetime.Scoped;
 });
 
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json")
+    .Build();
+
+var connectionString = configuration.GetConnectionString("Connection");
+
+InfrastructureConfiguration.ConfigureInfrastructureServices(builder.Services, connectionString);
 ApplicationConfiguration.ConfigureApplicationServices(builder.Services);
 
 var app = builder.Build();
