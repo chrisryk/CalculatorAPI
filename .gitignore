@@ -38,6 +38,3 @@ artifacts/*
 .vs/
 # Rider
 .idea/
-
-[R|r]elease/** 
-Properties/
