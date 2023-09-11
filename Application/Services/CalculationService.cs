@@ -47,15 +47,26 @@ namespace Application.Services
                 throw new ArgumentException(Messages.NegativeValue);
             }
 
-            return FactorialRecursive(value, 1, 1);
+            return FactorialRecursive(value);
         }
-        private long FactorialRecursive(int value, int current, long result)
+
+        /// <summary>
+        /// Helper for calculating factorial using recirsion.
+        /// </summary>
+        /// <param name="current">Default value should not be modified.</param>
+        /// <param name="result">Default value should not be modified.</param>
+        /// <returns></returns>
+        /// <exception cref="OverflowException"></exception>
+        private long FactorialRecursive(int value, int current = 1, long result = 1)
         {
             var calculatedValue = result * value;
 
             if (calculatedValue < 0)
             {
                 throw new OverflowException(Messages.ValueOverflow);
+            }
+            else if (calculatedValue == 0) {
+                return result;
             }
 
             return current == value ? calculatedValue : FactorialRecursive(value, current + 1, result * current);
