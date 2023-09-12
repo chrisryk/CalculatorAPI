@@ -5,7 +5,7 @@ namespace Application.Interfaces
 {
     public interface IOperationService
     {
-        Task CreateOperationAsync(float firstValue, string calculationOperator, float result, float? secondValue = null);
+        Task CreateOperationAsync(decimal firstValue, string calculationOperator, decimal result, decimal? secondValue = null);
         Task<IList<OperationDto>> GetAllOperations();
     }
 }

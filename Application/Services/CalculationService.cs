@@ -8,24 +8,24 @@ namespace Application.Services
         /// <summary>
         /// Addition operation for two numbers.
         /// </summary>
-        public float Add(float firstAddend, float secondAddend) => firstAddend + secondAddend;
+        public decimal Add(decimal firstAddend, decimal secondAddend) => firstAddend + secondAddend;
 
         /// <summary>
         /// Subtraction operation for two numbers.
         /// </summary>
-        public float Subtract(float minuend, float subtrahend) => minuend - subtrahend;
+        public decimal Subtract(decimal minuend, decimal subtrahend) => minuend - subtrahend;
 
         /// <summary>
         /// Multiplication operation for two numbers.
         /// </summary>
-        public float Multiply(float multiplier, float multiplicand) => multiplier * multiplicand;
+        public decimal Multiply(decimal multiplier, decimal multiplicand) => multiplier * multiplicand;
 
         /// <summary>
         /// Division operation.
         /// </summary>
         /// <param name="divisor">Should not be 0.</param>
         /// <exception cref="DivideByZeroException"></exception>
-        public float Divide(float dividend, float divisor)
+        public decimal Divide(decimal dividend, decimal divisor)
         {
             if (divisor == 0)
             {
@@ -40,7 +40,7 @@ namespace Application.Services
         /// </summary>
         /// <param name="value">Should be grater or erquals 0.</param>
         /// <exception cref="ArgumentException"></exception>
-        public long Factorial(int value)
+        public long Factorial(long value)
         {
             if (value < 0)
             {
@@ -57,7 +57,7 @@ namespace Application.Services
         /// <param name="result">Default value should not be modified.</param>
         /// <returns></returns>
         /// <exception cref="OverflowException"></exception>
-        private long FactorialRecursive(int value, int current = 1, long result = 1)
+        private long FactorialRecursive(long value, long current = 1, long result = 1)
         {
             var calculatedValue = result * value;
 
@@ -78,7 +78,7 @@ namespace Application.Services
         /// <param name="index">Should be greater than 0.</param>
         /// <returns>Value at specific index.</returns>
         /// <exception cref="ArgumentException"></exception>
-        public long GetFibonacciAt(int index)
+        public long GetFibonacciAt(long index)
         {
             if (index < 1)
             {

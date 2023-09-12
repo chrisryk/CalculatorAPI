@@ -7,6 +7,6 @@
         public const string Multiplication = "*";
         public const string Division = "/";
         public const string Factorial = "!";
-        public const string Fibonacci = "Fib";
+        public const string Fibonacci = "F(n)";
     }
 }

@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Commands.DoubleOperands
 {
-    public class DoubleOperandsHandler : IRequestHandler<DoubleOperandsCommand, float>
+    public class DoubleOperandsHandler : IRequestHandler<DoubleOperandsCommand, decimal>
     {
         private readonly ICalculationService _calculationService;
         private readonly IOperationService _operationService;
@@ -14,7 +14,7 @@ namespace Application.Commands.DoubleOperands
             _calculationService = calculationService;
             _operationService = operationService;
         }
-        public async Task<float> Handle(DoubleOperandsCommand request, CancellationToken cancellationToken)
+        public async Task<decimal> Handle(DoubleOperandsCommand request, CancellationToken cancellationToken)
         {
             var result = request.Operator switch
             {

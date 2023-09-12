@@ -21,9 +21,9 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("double-operands")]
-        [ProducesResponseType(typeof(float), 200)]
+        [ProducesResponseType(typeof(decimal), 200)]
         [ProducesResponseType(typeof(string), 400)]
-        public async Task<ActionResult<float>> DoubleOperands([FromBody] DoubleOperandsCommandParameters parameters)
+        public async Task<ActionResult<decimal>> DoubleOperands([FromBody] DoubleOperandsCommandParameters parameters)
         {
             var divideCommand = new DoubleOperandsCommand
             {

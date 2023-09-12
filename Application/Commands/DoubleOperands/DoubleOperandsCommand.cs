@@ -2,10 +2,10 @@
 
 namespace Application.Commands.DoubleOperands
 {
-    public class DoubleOperandsCommand : IRequest<float>
+    public class DoubleOperandsCommand : IRequest<decimal>
     {
-        public float FirstOperand { get; set; }
-        public float SecondOperand { get; set; }
+        public decimal FirstOperand { get; set; }
+        public decimal SecondOperand { get; set; }
         public string Operator { get; set; }
     }
 }

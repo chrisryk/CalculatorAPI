@@ -20,7 +20,7 @@ namespace Application.Services
             _mapper = mapper;
         }
 
-        public async Task CreateOperationAsync(float firstValue, string calculationOperator, float result, float? secondValue = null)
+        public async Task CreateOperationAsync(decimal firstValue, string calculationOperator, decimal result, decimal? secondValue = null)
         {
             var operation = new Operation
             {
